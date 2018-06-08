@@ -1,0 +1,24 @@
+1,SET,STR=9,VALUE=rclien,t
+2,SOCKCLOSE,str=9
+3,SOCKOPEN,str=9,type=CLIENT
+4,SET,STR=3,VALUE=
+5,SET,STR=4,VALUE=robot ,receiv,ed
+6,SET,I=3,VALUE=1
+7,SET,I=1,VALUE=0
+8,PAUSE
+9,*,receive
+10,IF,I=3,LE,VALUE=50,THEN
+11,SOCKRECV,str=9,str=3,I=1
+12,IF,I=1,EQ,VALUE=1,THEN
+13,//,receiv,ed
+14,SOCKSEND,str=9,str=4,I=2
+15,INC,I=3
+16,JUMP,*,receive
+17,ELSE
+18,//,error
+19,PAUSE
+20,END_IF
+21,ELSE
+22,//,loop e,nd
+23,PAUSE
+24,END_IF
